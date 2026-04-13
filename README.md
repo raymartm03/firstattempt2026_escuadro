@@ -23,7 +23,7 @@ Follow these steps to replicate the repository and run the application on a diff
 
 4. **Run the Development Server:**
     ```bash
-    
+    npm run dev
     ```
     - The application will be available at `http://localhost:3000`.
 

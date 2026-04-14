@@ -13,7 +13,7 @@ Follow these steps to replicate the repository and run the application on a diff
 
 2. **Clone the Repository:**
     ```bash
-    git clone 
+    git clone https://github.com/raymartm03/firstattempt2026_escuadro.git
     ```
 
 3. **Install Dependencies:**

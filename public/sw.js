@@ -10,8 +10,8 @@ const PRECACHE_ASSETS = [
   '/index.html',
   '/offline.html',
   '/manifest.json',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png',
+  '/favicon.svg',
+  '/icons.svg',
   '/style.css'
 ];
 

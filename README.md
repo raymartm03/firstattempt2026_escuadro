@@ -173,8 +173,12 @@ Using Vue.js (Vite), your task is to convert a mobile application into a fully f
 > All features and functionalities must be fully working (forms, navigation, interactions, etc.).
 > Follow best practices in Vue.js development (component structure, reusability, and maintainability).
 
+## Video Link:
+>[https://drive.google.com/file/d/1aVSqdvDU2o3KBuNaBk-S-fej6ZpL56Y4/view?usp=sharing](https://drive.google.com/file/d/1aVSqdvDU2o3KBuNaBk-S-fej6ZpL56Y4/view?usp=sharing)
 
-> Reference document:
+
+
+## Reference document:
 
 >[https://docs.google.com/document/d/15MJ0UUTx85zTlSI5XH1hmJZ4inzoYhlPsKg80DnidXA/edit?tab=t.qh2shoz8hbjp](https://docs.google.com/document/d/15MJ0UUTx85zTlSI5XH1hmJZ4inzoYhlPsKg80DnidXA/edit?tab=t.qh2shoz8hbjp)
 

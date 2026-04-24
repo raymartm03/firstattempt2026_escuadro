@@ -3,6 +3,7 @@
 ## Project Details
 - **Framework:** Vue JS (Vite)
 - **Module:** Alumni Portal: Document Request
+- **Status:** Enhanced with Progressive Web App (PWA) capabilities
 
 ## Installation
 Follow these steps to replicate the repository and run the application on a different computer:
@@ -10,6 +11,7 @@ Follow these steps to replicate the repository and run the application on a diff
 1. **Prerequisites:**
     - Install [Node.js](https://nodejs.org/en/download) (LTS version recommended)
     - Install [Git](https://git-scm.com/install/)
+    - Install [Python](https://www.python.org/downloads/) (3.7+) for the development server
 
 2. **Clone the Repository:**
     ```bash
@@ -21,17 +23,144 @@ Follow these steps to replicate the repository and run the application on a diff
     npm install
     ```
 
-4. **Run the Development Server:**
+4. **Build the Application:**
+    ```bash
+    npm run build
+    ```
+
+5. **Run the Development Server:**
+    
+    **Option A: Using Vite (Development with Hot Reload)**
     ```bash
     npm run dev
     ```
     - The application will be available at `http://localhost:5173/`.
 
-## AI Tools Used
-- Deepseek (Code genereation)
-- Claude(polishing design)
+    **Option B: Using Python (Production Build)**
+    ```bash
+    python serve.py
+    ```
+    - The application will be available at `http://localhost:8080/`.
+    - This serves the built production files and fully tests PWA features.
 
-## Prompt
+## PWA Features (Activity #15)
+This project has been converted into a full Progressive Web Application with the following capabilities:
+
+### ✅ Service Worker
+- **File:** `/public/sw.js`
+- **Strategy:** Cache-First with network fallback
+- **Features:**
+  - Automatic asset pre-caching on installation
+  - Offline support with fallback page
+  - Smart cache invalidation for old versions
+  - Handles network failures gracefully
+
+### ✅ Web App Manifest
+- **File:** `/manifest.json`
+- **Branding:** Blue Knight Alumni Hub theme
+- **Features:**
+  - App name, short name, and icon configuration
+  - Standalone display mode (appears as a native app)
+  - Theme colors matching university branding (#003366)
+  - Multiple icon sizes for different devices
+
+### ✅ Offline Functionality
+- **Fallback Page:** `/public/offline.html`
+- **Auto-caching:** Critical assets cached on first load
+- **Network Restoration:** App automatically reloads when connection returns
+- **Seamless UX:** Users can interact with the app even without internet
+
+### ✅ Installation & Home Screen
+- Browser will show "Install App" prompt
+- Add to home screen on mobile devices
+- Standalone app experience on iOS and Android
+
+## PWA Master Prompt (AI-Assisted Coding)
+```
+I am using Vue.js with Vite as my build tool. 
+I need to convert this framework-based project into a Progressive Web Application (PWA).
+
+Please help me with:
+1. Creating a proper manifest.json with university branding (Blue Knight theme)
+2. Implementing a Service Worker with offline caching
+3. Setting up service worker registration in the Vue app
+4. Creating an offline fallback page
+5. Ensuring the app works offline with cached assets
+6. Providing necessary meta tags for PWA installation
+
+The project should:
+- Cache critical assets on first load
+- Serve from cache when offline
+- Automatically update when back online
+- Show an "Install App" prompt in supported browsers
+- Work as a standalone app on mobile
+```
+
+## AI Tools Used
+- **Deepseek:** Code generation
+- **Claude:** Design polishing & PWA architecture
+- **GitHub Copilot:** AI-assisted PWA implementation
+
+## Testing the PWA
+
+### 1. Service Worker Installation
+- Open DevTools (F12) → Application tab
+- Check "Service Workers" section
+- Refresh the page after first load
+- Service Worker status should show "activated and running"
+
+### 2. Offline Test
+- Open DevTools → Application tab
+- Check "Offline" checkbox
+- Refresh the page
+- App should load completely offline with cached assets
+- All images and styles should display perfectly
+
+### 3. Install to Home Screen
+- Look for "Install" icon in browser address bar
+- Click to install as a standalone app
+- App appears as a native application
+- Can be launched from app drawer/home screen
+
+### 4. Cache Management
+- DevTools → Application → Cache Storage
+- View cached assets: `alumni-hub-v1.0.0`
+- Old caches are automatically deleted on service worker activation
+
+## Git Workflow
+- **Branch:** `feature/pwa-ready`
+- **Main Changes:** Service worker, manifest, offline page, PWA meta tags
+- All PWA-related features are in the feature branch for stability
+
+## Known Issues Fixed During AI-Assisted Development
+1. ✅ **Vite Entry Point:** Moved `index.html` to project root (required by Vite)
+2. ✅ **Manifest Path:** Updated service worker to reference `/offline.html` instead of incorrect path
+3. ✅ **Cache Names:** Aligned cache names across service worker and manifest
+4. ✅ **MIME Types:** Python server configured to serve `.js` files with correct MIME type
+5. ✅ **SPA Routing:** Python server configured to serve `index.html` for SPA navigation
+
+## Deployment Instructions
+To deploy this PWA to production:
+
+1. Push to the `feature/pwa-ready` branch:
+   ```bash
+   git push origin feature/pwa-ready
+   ```
+
+2. Merge into main:
+   ```bash
+   git checkout main
+   git merge feature/pwa-ready
+   ```
+
+3. Deploy the `public/` directory to your hosting service (Netlify, Vercel, GitHub Pages, etc.)
+
+4. Ensure server headers are set:
+   - `Cache-Control: no-cache` for HTML
+   - `Service-Worker-Allowed: /` for service worker
+
+## Previous Prompt (Activity #14)
+
 > Act as a senior software developer from Ateneo de Davao University.
 Using Vue.js (Vite), your task is to convert a mobile application into a fully functional desktop web application.
 
